@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>Beer from Mauro </title>
+
+
+<script>
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName || 'not set'
+    this.lastName = lastName || 'not set'
+  }
+  getFirstName(){
+    return this.firstName
+  }
+  getLastName(){
+    return this.lastName
+  }
+}
+
+class Teacher extends Person {
+  constructor(member) {
+    super(member.firstName, member.lastName)
+   }
+}
+class Student extends Person {
+    constructor(member) {
+      super(member.firstName, member.lastName)
+    }
+  }
+
+
+class HYFClass {
+  constructor(members) {
+    this.members = members || []
+    let membersIsArray = this.members instanceof Array;
+    if(!membersIsArray){
+      throw new Error('Members should be an array!')
+    }
+  }
+  addTeacher(member){
+    this.members.push(new Teacher(member))
+  }
+  addStudent(member){
+    this.members.push(new Student(member))
+  }
+  getAllTeachers(){
+    return this.members.filter(member => member instanceof Teacher)
+  }
+  getAllStudents(){
+    return this.members.filter(member => member instanceof Student)
+  }
+}
+var JS = new HYFClass([])
+var jsMembers = [
+  {firstName: 'Mauro', lastName: 'Mandracchia', type: 'teacher'},
+  {firstName: 'David', lastName: 'Furlong', type: 'teacher'},
+  {firstName: 'Ali', lastName: 'Barakat', type: 'Student'},
+  {firstName: 'Jad', lastName: 'Kadour', type: 'Student'}
+]
+
+jsMembers.forEach((member)=>{
+  if(member.type === 'teacher'){
+    JS.addTeacher (member)
+  }else{
+    JS.addStudent(member)
+  }
+})
+
+console.log('All Teacher: ', JS.getAllTeachers())
+console.log('All Students: ', JS.getAllStudents())
+</script>
+</head>
+<body>
+</body>
+</html>
