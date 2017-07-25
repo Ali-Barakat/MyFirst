@@ -1,0 +1,17 @@
+git branch MyBranch
+git checkout MyBranch
+git remote add origin/MyBranch
+echo Hello leaf1 > leaf2.txt
+echo Hello leaf2 > leaf2.txt
+echo Hello flower > flower.txt
+echo Hello fruit > fruit.txt
+git stauts
+git add '*.txt'
+git status
+git commit -m "Add all txt files"
+git log
+git push -u origin MyBranch
+git checkout master
+git merge MyBranch
+git branch -d MyBranch
+git branch
